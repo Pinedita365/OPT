@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "Repaso"
+		},
+		{
+			"path": "tema1"
+		},
+		{
+			"name": "1_EV",
+			"path": "."
+		},
+		{
+			"name": "OPT",
+			"path": ".."
+		}
+	]
+}
