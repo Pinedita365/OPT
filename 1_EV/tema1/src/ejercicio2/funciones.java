@@ -5,4 +5,5 @@ public class funciones {
         int n = (int)(Math.random()*11);
         return n;
     }
+    
 }

@@ -12,13 +12,13 @@ public class A {
         } while (n < 1);
         int[][] matriz = new int[5][n];
         for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz.length; j++) {
+            for (int j = 0; j < matriz[0].length; j++) {
                 matriz[i][j] = funciones.aleatorio();
             }
         }
         for (int i = 0; i < matriz.length; i++) {
             System.out.println();
-            for (int j = 0; j < matriz.length; j++) {
+            for (int j = 0; j < matriz[0].length; j++) {
                 System.out.print(matriz[i][j] + " ");
             }
         }
