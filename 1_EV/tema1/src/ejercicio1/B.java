@@ -28,17 +28,12 @@ public class B {
             String primera = "";
             String segunda = "";
 
-            switch (opcion) {
-                case 1:
-                    primera = fecha1;
-                    segunda = fecha2;
-                    break;
-                case 2:
-                    primera = fecha2;
-                    segunda = fecha1;
-                    break;
-                default:
-                    throw new AssertionError();
+            if (opcion == 1) {
+                primera = fecha1;
+                segunda = fecha2;
+            }else{
+                primera = fecha2;
+                segunda = fecha1;
             }
 
             System.out.println("La primera fecha es entonces: " + primera);
