@@ -12,7 +12,7 @@ public class app1 {
             System.out.println(c1.getTitular() + ", su saldo es de " + c1.getCantidad() + "€. \n¿Qué desea hacer?\n1. Ingresar dinero\n2. Retirar dinero\n3. Salir");
             menu = s.nextInt();
         if (menu == 1) {
-            c1.ingresar();
+            c1.ingresar();  
         } else if(menu == 2){
             c1.retirar();
         }
