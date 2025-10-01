@@ -1,9 +1,9 @@
 
 package ejercicio3;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class OrdenaBolis {
 
@@ -35,7 +35,7 @@ public class OrdenaBolis {
         
         Collections.sort(boli);
         
-        System.out.println(boli);
+        // System.out.println(boli);
         
     }
     
