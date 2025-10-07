@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class b {
     public static void main(String[] args) {
         ArrayList<String> arra = new ArrayList<>();
-        arra.add("HALA");
+        arra.add("HOLA");
         arra.add("ADIO");
         arra.add("FIUMBA");
 
