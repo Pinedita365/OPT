@@ -9,7 +9,7 @@ private int cant;
 private String envase;
 private double descuento;
 
-    public detergente(int cant, double marca, double precio) {
+    public detergente(int cant, double marca, double precio, String envase, double descuento) {
         super(marca, precio);
         this.cant = cant;
         this.envase = envase;
@@ -48,7 +48,12 @@ private double descuento;
 
     @Override
     public double getPrecioDescuento() {
-        return (getPrecio()-(getPrecio()*(getDescuento()*getPrecio())));
+        return getPrecio()-(getPrecio()*(getDescuento()/100));
+    }
+
+    @Override
+    public String toString() {
+        return "Detergente {marca = " + marca + ", precio = " + precio + ", volumen = " + cant + ", tipo de envase = " + envase + ", descuento = " + descuento + "%, precio con descuento " + getPrecioDescuento() + " }";
     }
 
     
