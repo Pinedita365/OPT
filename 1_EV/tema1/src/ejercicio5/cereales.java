@@ -9,9 +9,10 @@ public class cereales extends producto implements EsAlimento{
     private tipo tipo;
     private LocalDate caducidad;
 
-    public cereales(double marca, double precio, tipo tipo) {
+    public cereales(double marca, double precio, tipo tipo, LocalDate caducidad) {
         super(marca, precio);
         this.tipo = tipo;
+        this.caducidad = caducidad;
     }
 
     
