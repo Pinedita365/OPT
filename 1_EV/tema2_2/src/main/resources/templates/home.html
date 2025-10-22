@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+  <h3 th:text='${fecha}'></h3>
+  <table>
+    <tr th:each="persona : ${lista}">
+      <td th:text="${persona.nombre}"></td>
+      <td th:text="${persona.apellido}"></td>
+      <td th:text="${persona.email}"></td>
+      <td th:text="${persona.sexo}"></td>
+      
+      </tr>
+  </table>
+  
+  <!-- <p th:text='${lista}'></p> q -->
+</body>
+</html>
