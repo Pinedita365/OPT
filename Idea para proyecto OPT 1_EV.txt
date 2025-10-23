@@ -1,0 +1,6 @@
+Idea para proyecto OPT 1_EV
+
+Un concesionario.
+Cards que utilicen un objeto coche y un objeto motos para generar el nombre, la foto y los caballos/cilindrada.
+Un objeto vehiculo que tenga nombre, marca y precio, y dos objetos hijos coche y moto que tengan caballos y cilindrada.
+Una pagina principal que te de a elegir entre coche o moto, una pagina para cochces y otra para moto, una pagina de lista de compra y por ultimo una de finalizar la compra.

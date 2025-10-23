@@ -1,10 +1,18 @@
 package com.example.tema2_2.clases;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Persona {
     public String nombre;
     public String apellido;
     public String email;
     public String sexo;
+
+    
+    
+    public Persona() {
+    }
 
     public Persona(String nombre, String apellido, String email, String sexo) {
         this.nombre = nombre;
