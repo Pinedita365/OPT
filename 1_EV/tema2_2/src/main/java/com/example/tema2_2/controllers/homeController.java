@@ -21,16 +21,3 @@ public class homeController {
         return "home"; // A qué html me voy
     }
 }
-
-// public class PersonaController {
-//   static List<Persona> lista= new ArrayList<Persona>();
-//   static {
-    
-//     lista.add(new Persona ("pepe","perez",20));
-//     lista.add(new Persona ("ana","gomez",40));
-//   }
-//   @GetMapping("/lista")
-//   public String lista(Model modelo) {
-//     modelo.addAttribute("lista", lista);
-//     return "lista";
-//   }
