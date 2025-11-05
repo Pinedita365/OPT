@@ -4,9 +4,11 @@ public class Turistica extends Actividad{
 
     public boolean vehiculo;
 
-    public Turistica(int id, int duracion, int precio, String nombre, String descripcion, String img,
+
+
+    public Turistica(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
             boolean vehiculo) {
-        super(id, duracion, precio, nombre, descripcion, img);
+        super(duracion, precio, ciudad, nombre, descripcion, img);
         this.vehiculo = vehiculo;
     }
 
@@ -29,7 +31,7 @@ public class Turistica extends Actividad{
 
     @Override
     public int getTiempo() {
-        return getDuracion()*60;
+        return getDuracion()/60;
     }
 
     @Override

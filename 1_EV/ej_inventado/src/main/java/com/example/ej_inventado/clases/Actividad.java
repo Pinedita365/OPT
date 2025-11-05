@@ -1,16 +1,19 @@
 package com.example.ej_inventado.clases;
 
-abstract class Actividad implements Descripciones{
-    public int id, duracion, precio;
-    public String nombre, descripcion, img;
+abstract  class Actividad implements Descripciones{
+    static int id;
+    public int id2, duracion, precio;
+    public String ciudad, nombre, descripcion, img;
 
-    public Actividad(int id, int duracion, int precio, String nombre, String descripcion, String img) {
-        this.id = id;
+    public Actividad(int duracion, int precio, String ciudad, String nombre, String descripcion, String img) {
+        this.id2 = id;
         this.duracion = duracion;
         this.precio = precio;
+        this.ciudad = ciudad;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.img = img;
+        id++;
     }
 
     public Actividad() {
@@ -65,7 +68,4 @@ abstract class Actividad implements Descripciones{
     public void setImg(String img) {
         this.img = img;
     }
-
-    
-    
 }

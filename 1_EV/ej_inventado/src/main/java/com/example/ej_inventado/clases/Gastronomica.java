@@ -4,9 +4,9 @@ public class Gastronomica extends Actividad{
 
     public String vestimenta;
 
-    public Gastronomica(int id, int duracion, int precio, String nombre, String descripcion, String img,
+    public Gastronomica(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
             String vestimenta) {
-        super(id, duracion, precio, nombre, descripcion, img);
+        super(duracion, precio, ciudad, nombre, descripcion, img);
         this.vestimenta = vestimenta;
     }
 
@@ -29,7 +29,7 @@ public class Gastronomica extends Actividad{
 
     @Override
     public int getTiempo() {
-        return getDuracion()*60;
+        return getDuracion()/60;
     }
 
     @Override

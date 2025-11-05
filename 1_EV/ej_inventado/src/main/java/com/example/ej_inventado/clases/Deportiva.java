@@ -4,8 +4,9 @@ public class Deportiva extends Actividad{
 
     public Nivel nivel;
 
-    public Deportiva(int id, int duracion, int precio, String nombre, String descripcion, String img, Nivel nivel) {
-        super(id, duracion, precio, nombre, descripcion, img);
+    public Deportiva(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
+            Nivel nivel) {
+        super(duracion, precio, ciudad, nombre, descripcion, img);
         this.nivel = nivel;
     }
 
@@ -28,7 +29,7 @@ public class Deportiva extends Actividad{
 
     @Override
     public int getTiempo() {
-        return (getDuracion() * 60);
+        return (getDuracion()/60);
     }
 
     @Override

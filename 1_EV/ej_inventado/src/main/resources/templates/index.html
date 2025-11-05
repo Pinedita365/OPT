@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriPing</title>
+        <link rel="stylesheet" href="css/styleIndex.css">
+
+    <title>TriPing | Tu gestor de viajes</title>
 </head>
 <body>
-    <section class="beinvenida">
-        <h1>Bienvenido a TripIng</h1>
-        <p>Organiza tus actividades, descubre experiencias únicas y planifica cada día de tu aventura.</p>
-        <form action="inicio">
-            <input type="text" name="nombre" required placeholder="Introduzca su nombre">
-            <input type="submit">
-        </form>
-    </section>
+    <div class="overlay">
+        <header>
+            <h1>🌍 Bienvenido a <span class="logo">TriPing</span></h1>
+            <p>Organiza, planifica y disfruta cada momento de tu viaje</p>
+        </header>
+
+        <main>
+            <form action="/inicio" class="inicio-form">
+                <h2>Comienza tu aventura</h2>
+
+                <label for="nombre">Tu nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ruben" required>
+
+                <label for="ciudad">Destino del viaje:</label>
+                <input type="text" id="destino" name="ciudad" placeholder="Sevilla" required>
+
+                <label for="fEntrada">Fecha de inicio:</label>
+                <input type="date" id="fechaInicio" name="fEntrada" required>
+
+                <label for="fSalida">Fecha de fin:</label>
+                <input type="date" id="fechaFin" name="fSalida" required>
+
+                <button type="submit">Comenzar planificación</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>© 2025 <span class="logo">TriPing</span> — Tu aventura empieza aquí ✈️</p>
+        </footer>
+    </div>
 </body>
 </html>
