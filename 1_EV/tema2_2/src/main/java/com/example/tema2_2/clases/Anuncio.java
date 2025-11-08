@@ -2,7 +2,7 @@ package com.example.tema2_2.clases;
 
 public class Anuncio {
 
-    static   int id = 0 ;
+    static int id = 0 ;
     public int idObjeto;
     public String nombre;
     public String asunto;

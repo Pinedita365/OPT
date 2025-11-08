@@ -4,9 +4,9 @@ public class Gastronomica extends Actividad{
 
     public String vestimenta;
 
-    public Gastronomica(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
+    public Gastronomica(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
             String vestimenta) {
-        super(duracion, precio, ciudad, nombre, descripcion, img);
+        super(tipo,duracion, precio, ciudad, nombre, descripcion, img);
         this.vestimenta = vestimenta;
     }
 

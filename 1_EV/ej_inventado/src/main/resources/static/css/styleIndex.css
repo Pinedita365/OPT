@@ -1,127 +1,125 @@
+/* IMAGEN DECORATIVA */
+.imagen-entrada {
+    width: 100%;
+    height: 500px;
+    background: url('/img/inicio.jpg') no-repeat center center/cover;
+}
 /* 🎨 Paleta TriPing */
 :root {
-    --color-bg: #E1FAF9;
-    --color-accent1: #78FFD6;
-    --color-accent2: #0AD3FF;
-    --color-accent3: #C3979F;
-    --color-dark: #023C40;
-}
-
-/* Reset */
+  --color-bg: #e1faf9;
+  --color-accent1: #78ffd6;
+  --color-accent2: #0ad3ff;
+  --color-accent3: #c3979f;
+  --color-dark: #023c40;
+} /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-
 body {
-    background: url('/img/inicio.jpg') no-repeat center center/cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Capa translúcida */
+  background: url("/img/inicio.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} /* Capa translúcida */
 .overlay {
-    background-color: rgba(225, 250, 249, 0.85);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Encabezado */
+  background-color: rgba(225, 250, 249, 0.85);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} /* Encabezado */
 header {
-    text-align: center;
-    margin-top: 3rem;
-    color: var(--color-dark);
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--color-dark);
 }
-
 header h1 {
-    font-size: 2.5rem;
-    color: var(--color-dark);
+  font-size: 2.5rem;
+  color: var(--color-dark);
 }
-
 .logo {
-    color: var(--color-accent2);
-    font-weight: 700;
+  color: var(--color-accent2);
+  font-weight: 700;
 }
-
 header p {
-    font-size: 1.2rem;
-    color: var(--color-accent3);
-    margin-top: 0.5rem;
-}
-
-/* Formulario */
+  font-size: 1.2rem;
+  color: var(--color-accent3);
+  margin-top: 0.5rem;
+} /* Formulario */
 .inicio-form {
-    background-color: var(--color-accent1);
-    border: 2px solid var(--color-accent2);
-    border-radius: 20px;
-    padding: 2rem 3rem;
-    width: 90%;
-    max-width: 450px;
-    margin: 3rem auto;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(2, 60, 64, 0.25);
-    backdrop-filter: blur(3px);
+  background-color: var(--color-accent1);
+  border: 2px solid var(--color-accent2);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  width: 90%;
+  max-width: 450px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(2, 60, 64, 0.25);
+  backdrop-filter: blur(3px);
 }
-
 .inicio-form h2 {
-    margin-bottom: 1rem;
-    color: var(--color-dark);
+  margin-bottom: 1rem;
+  color: var(--color-dark);
 }
-
 .inicio-form label {
-    display: block;
-    font-size: 1rem;
-    color: var(--color-dark);
-    text-align: left;
-    margin-top: 1rem;
-    margin-bottom: 0.3rem;
+  display: block;
+  font-size: 1rem;
+  color: var(--color-dark);
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
 }
-
 .inicio-form input {
-    width: 100%;
-    padding: 0.7rem;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
-
 .inicio-form button {
-    background-color: var(--color-accent2);
-    color: var(--color-dark);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s ease;
-    margin-top: 1rem;
+  background-color: var(--color-accent2);
+  color: var(--color-dark);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 1rem;
 }
-
 .inicio-form button:hover {
-    background-color: var(--color-dark);
-    color: var(--color-bg);
-}
-
-/* Footer */
-footer {
+  background-color: var(--color-dark);
+  color: var(--color-bg);
+} /* Footer */
+.mensaje-error {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #C3979F;  /* Rosa suave */
+    color: #023C40;             /* Verde oscuro */
+    border-left: 4px solid #0AD3FF; /* Azul brillante */
+    border-radius: 8px;
+    font-weight: bold;
     text-align: center;
-    background-color: var(--color-dark);
-    color: var(--color-bg);
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    margin-top: auto;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+footer {
+  text-align: center;
+  background-color: var(--color-dark);
+  color: var(--color-bg);
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
 footer .logo {
-    color: var(--color-accent2);
+  color: var(--color-accent2);
 }

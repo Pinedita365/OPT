@@ -1,11 +1,155 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TriPing - Actividades del viaje</title>
+    <link rel="stylesheet" href="css/styleActividades.css">
 </head>
+
 <body>
-    
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left"></div>
+        <div class="header-center">
+            <h1>TriPing</h1>
+        </div>
+        <div class="header-right">
+            <span class="usuario" th:text="${session.nombre}"></span>
+        </div>
+    </header>
+
+    <!-- IMAGEN DE ENTRADA (decorativa) -->
+    <section class="imagen-entrada">
+        <!-- Solo decorativo -->
+    </section>
+
+    <!-- INFORMACIÓN DEL VIAJE Y CONTROLES -->
+    <section class="info-viaje">
+        <div class="datos-viaje">
+            <div class="fechas">
+                Inicio: <span id="fechaInicio" th:text="${session.fEntrada}"></span> —
+                Fin: <span id="fechaFin" th:text="${session.fSalida}"></span>
+            </div>
+            <div class="localidad">
+                Localidad: <span id="localidadViaje" th:text="${session.ciudad}"></span>
+            </div>
+        </div>
+
+        <div class="controles">
+            <form action="">
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar" name="orden">
+                    <option value="defecto">Por defecto</option>
+                    <option value="precio">Precio</option>
+                </select>
+                <input type="submit" value="Ordenar">
+            </form>
+
+            <div class="contador">
+                Actividades añadidas: <span id="contadorActividades" th:text="${session.cont}"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPO DE ACTIVIDAD -->
+    <section class="tipo-actividad">
+        <h2>Tipo de actividad</h2>
+        <div class="opciones-actividad">
+            <form action="">
+                <input type="hidden" name="tipo" value="DEPORTIVA">
+                <input class="button" type="submit" value="Deportiva">
+            </form>
+            <form action="">
+                <input type="hidden" name="tipo" value="GASTRONOMICA">
+                <input class="button" type="submit" value="Gastronómica">
+            </form>
+            <form action="">
+                <input type="hidden" name="tipo" value="TURISTICA">
+                <input class="button" type="submit" value="Turística">
+            </form>
+            <form action="">
+                <input type="hidden" name="tipo" value="all">
+                <input class="button" type="submit" value="Todas las actividades">
+            </form>
+        </div>
+    </section>
+    <div class="contenedor-principal">
+        <!-- GRID DE ACTIVIDADES -->
+        <section>
+
+            <div th:if="${session.tipo != 'all'}" class="contenedor-actividades">
+                <div th:each="dep,i : ${listaAct}"
+                    th:class="${dep.tipo.name() == session.tipo} ? 'card-actividad' : 'oculto'">
+                    <div th:if="${dep.tipo.name() == session.tipo}"></div>
+                    <img th:src="${dep.img}" alt="Imagen de la actividad">
+                    <h3 th:text="${dep.nombre}"></h3>
+                    <p th:text="${dep.descripcion}"></p>
+                    <p><strong>Ciudad:</strong> <span th:text="${dep.ciudad}"></span></p>
+                    <div class="botones-card">
+                        <a href="#" class="btn-detalles">Ver detalles</a>
+                        <form action="">
+                            <input type="hidden" name="tipoIDAct" value="dep">
+                            <input type="hidden" name="añadirCarrito" th:value="${i.index}">
+                            <input class="btn-detalles" type="submit" value="Añadir actividad">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div th:unless="${session.tipo != 'all'}" class="contenedor-actividades">
+                <div th:each="dep,i : ${listaAct}" class="card-actividad">
+                    <img th:src="${dep.img}" alt="Imagen de la actividad">
+                    <h3 th:text="${dep.nombre}"></h3>
+                    <p th:text="${dep.descripcion}"></p>
+                    <p><strong>Ciudad:</strong> <span th:text="${dep.ciudad}"></span></p>
+                    <div class="botones-card">
+                        <a href="#" class="btn-detalles">Ver detalles</a>
+                        <form action="">
+                            <input type="hidden" name="tipoIDAct" value="dep">
+                            <input type="hidden" name="añadirCarrito" th:value="${i.index}">
+                            <input class="btn-detalles" type="submit" value="Añadir actividad">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- 🛒 Carrito lateral fijo -->
+        <aside class="carrito">
+            <h2>🛍️ Tu Carrito</h2>
+
+            <div th:if="${session.carrito.isEmpty()}">
+                <p>No hay actividades en el carrito aún.</p>
+            </div>
+
+            <ul th:unless="${session.carrito.isEmpty()}">
+                <li th:each="act,e : ${session.carrito}">
+                    <span th:text="${act.nombre}">Nombre Actividad</span>
+                    <form th:action="@{/eliminarCarrito}" method="" style="display:inline;">
+                        <input type="hidden" name="idEliminar" th:value="${e.index}">
+                        <input type="submit" class="btn-quitar" value="❌"></input>
+                    </form>
+                </li>
+            </ul>
+            <div class="precio-carrito">
+                <strong>Precio total: <span th:text="${session.precioCarro}"></span>€</strong>
+            </div>
+            <div class="carrito-acciones" th:if="${!session.carrito.isEmpty()}">
+                <form th:action="@{/confirmarCarrito}" method="">
+                    <button type="submit" class="btn-confirmar">Confirmar viaje</button>
+                </form>
+            </div>
+
+            <div th:if="${errorMensaje2 != null}" class="error-carrito" th:text="${errorMensaje2}"></div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 TriPing — Tu planificador de viajes</p>
+    </footer>
+
 </body>
+
 </html>

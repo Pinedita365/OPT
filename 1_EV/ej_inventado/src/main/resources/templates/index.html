@@ -15,7 +15,7 @@
         </header>
 
         <main>
-            <form action="/inicio" class="inicio-form">
+            <form action="/comprobar" class="inicio-form">
                 <h2>Comienza tu aventura</h2>
 
                 <label for="nombre">Tu nombre:</label>
@@ -32,8 +32,10 @@
 
                 <button type="submit">Comenzar planificación</button>
             </form>
-        </main>
 
+            
+        </main>
+                <div th:if="${errorMensaje}" class="mensaje-error" th:text="${errorMensaje}"></div>
         <footer>
             <p>© 2025 <span class="logo">TriPing</span> — Tu aventura empieza aquí ✈️</p>
         </footer>

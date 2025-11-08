@@ -1,32 +1,23 @@
 package com.example.ej_inventado.clases;
 
-abstract  class Actividad implements Descripciones{
-    static int id;
-    public int id2, duracion, precio;
+import java.util.Objects;
+
+public abstract  class Actividad implements Descripciones, Comparable<Actividad>{
+    public Tipo tipo;
+    public int duracion, precio;
     public String ciudad, nombre, descripcion, img;
 
-    public Actividad(int duracion, int precio, String ciudad, String nombre, String descripcion, String img) {
-        this.id2 = id;
+    public Actividad(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img) {
+        this.tipo = tipo;
         this.duracion = duracion;
         this.precio = precio;
         this.ciudad = ciudad;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.img = img;
-        id++;
     }
 
     public Actividad() {
-    }
-
-    
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getDuracion() {
@@ -68,4 +59,62 @@ abstract  class Actividad implements Descripciones{
     public void setImg(String img) {
         this.img = img;
     }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    @Override
+    public int compareTo(Actividad o) {
+        return  o.precio - this.precio;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + this.duracion;
+        hash = 47 * hash + this.precio;
+        hash = 47 * hash + Objects.hashCode(this.ciudad);
+        hash = 47 * hash + Objects.hashCode(this.nombre);
+        hash = 47 * hash + Objects.hashCode(this.descripcion);
+        hash = 47 * hash + Objects.hashCode(this.img);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Actividad other = (Actividad) obj;
+        if (this.duracion != other.duracion) {
+            return false;
+        }
+        if (this.precio != other.precio) {
+            return false;
+        }
+        if (!Objects.equals(this.ciudad, other.ciudad)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        return Objects.equals(this.img, other.img);
+    }
+
+    
+        
 }

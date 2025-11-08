@@ -4,9 +4,9 @@ public class Deportiva extends Actividad{
 
     public Nivel nivel;
 
-    public Deportiva(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
+    public Deportiva(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
             Nivel nivel) {
-        super(duracion, precio, ciudad, nombre, descripcion, img);
+        super(tipo,duracion, precio, ciudad, nombre, descripcion, img);
         this.nivel = nivel;
     }
 

@@ -6,9 +6,9 @@ public class Turistica extends Actividad{
 
 
 
-    public Turistica(int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
+    public Turistica(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
             boolean vehiculo) {
-        super(duracion, precio, ciudad, nombre, descripcion, img);
+        super(tipo,duracion, precio, ciudad, nombre, descripcion, img);
         this.vehiculo = vehiculo;
     }
 
