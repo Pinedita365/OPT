@@ -36,8 +36,8 @@ public class Turistica extends Actividad{
 
     @Override
     public String getBreveDesc() {
-        if (getDescripcion().length() > 20) {
-            return getDescripcion().substring(0,20)+"...";   
+        if (getDescripcion().length() > 50) {
+            return getDescripcion().substring(0,50)+"...";   
         }else{
             return getDescripcion();
         }

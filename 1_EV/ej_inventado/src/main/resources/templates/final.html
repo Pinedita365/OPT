@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriPing | Viaje Planificado</title>
+    <link rel="stylesheet" href="css/styleFinal.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <button onclick="window.location.href='inicio'">← Volver al inicio</button>
+        </div>
+        <div class="header-center">
+            <h1>TriPing</h1>
+        </div>
+        <div class="header-right">
+            <span class="usuario" th:text="${session.nombre}">Usuario</span>
+        </div>
+    </header>
+
+    <!-- BARRA DE INFORMACIÓN DEL VIAJE -->
+    <div class="barra-viaje">
+        <p>
+            <strong th:text="${session.ciudad}"></strong> — 
+            <span th:text="'Del ' + ${session.fEntrada} + ' al ' + ${session.fSalida}"></span>
+        </p>
+    </div>
+
+    <main class="final-container">
+        <!-- TÍTULO -->
+        <h2 class="titulo-viaje">¡Viaje Planificado!</h2>
+
+        <!-- TABLA DE DÍAS -->
+        <div class="dias-container">
+            <div th:each="act, i : ${session.plan}" class="card-dia">
+                <h4 th:text="'Día ' + ${i.index+1}"></h4>
+                <div th:if="${act != null}" class="card-actividad">
+                    <img th:src="${act.img}" alt="Imagen de la actividad">
+                    <h3 th:text="${act.nombre}"></h3>
+                    <p th:text="${act.getBreveDesc()}"></p>
+                    <p><strong>Ciudad:</strong> <span th:text="${act.ciudad}"></span></p>
+                    <p><strong>Precio:</strong> <span th:text="${act.precio} + ' €'"></span></p>
+                    <p><strong>Duración:</strong> <span th:text="${act.getTiempo()} + ' horas'"></span></p>
+                </div>
+                <div th:if="${act == null}" class="dia-libre">
+                    Día libre
+                </div>
+            </div>
+        </div>
+
+        <!-- PRECIO TOTAL -->
+        <div class="precio-total">
+            <p><strong>Precio total:</strong> <span th:text="${session.precioCarro} + ' €'"></span></p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 TriPing - Tu gestor de viajes</p>
+    </footer>
+</body>
+
+</html>

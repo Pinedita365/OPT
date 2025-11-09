@@ -89,9 +89,11 @@
                     <p th:text="${dep.descripcion}"></p>
                     <p><strong>Ciudad:</strong> <span th:text="${dep.ciudad}"></span></p>
                     <div class="botones-card">
-                        <a href="#" class="btn-detalles">Ver detalles</a>
+                        <form action="verMas">
+                            <input type="hidden" name="id" th:value="${i.index}">
+                            <input class="btn-detalles" type="submit" value="Ver Detalles">
+                        </form>
                         <form action="">
-                            <input type="hidden" name="tipoIDAct" value="dep">
                             <input type="hidden" name="añadirCarrito" th:value="${i.index}">
                             <input class="btn-detalles" type="submit" value="Añadir actividad">
                         </form>
@@ -102,12 +104,14 @@
                 <div th:each="dep,i : ${listaAct}" class="card-actividad">
                     <img th:src="${dep.img}" alt="Imagen de la actividad">
                     <h3 th:text="${dep.nombre}"></h3>
-                    <p th:text="${dep.descripcion}"></p>
+                    <p th:text="${dep.getBreveDesc()}"></p>
                     <p><strong>Ciudad:</strong> <span th:text="${dep.ciudad}"></span></p>
                     <div class="botones-card">
-                        <a href="#" class="btn-detalles">Ver detalles</a>
+                        <form action="verMas">
+                            <input type="hidden" name="id" th:value="${i.index}">
+                            <input class="btn-detalles" type="submit" value="Ver Detalles">
+                        </form>
                         <form action="">
-                            <input type="hidden" name="tipoIDAct" value="dep">
                             <input type="hidden" name="añadirCarrito" th:value="${i.index}">
                             <input class="btn-detalles" type="submit" value="Añadir actividad">
                         </form>

@@ -1,5 +1,6 @@
 package com.example.ej_inventado.Controllers;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -46,7 +47,7 @@ public class Controllers {
             session.setAttribute("ciudad", ciudad);
             return "redirect:/inicio";
         } catch (IllegalArgumentException e) {
-            model.addAttribute("errorMensaje", e.getMessage());
+            session.setAttribute("errorMensaje", e.getMessage());
             return "redirect:/index";
         }
 
@@ -74,7 +75,7 @@ public class Controllers {
                 "Visita el Sanchez Pizjuan desde la vista de tus jugadores favoritos. Entra a los vestuarios de los jugadores y pisa el campo donde juegan",
                 "img/sevilla.jpg", Nivel.Bajo));
         listaAct.add(new Deportiva(Tipo.DEPORTIVA, 300, 35, "Cantabria", "Descenso del Seya",
-                "realiza el descenso del Seya con profesionales. un lugar donde, mientras haces deporte, vas a ver la parte más bonita de la naturaleza cantabrica.",
+                "Realiza el descenso del Seya con profesionales. Un lugar donde, mientras haces deporte, vas a ver la parte más bonita de la naturaleza cantabrica.",
                 "img/descensoSeya.jpg", Nivel.Medio));
         listaAct.add(new Deportiva(Tipo.DEPORTIVA, 120, 25, "Almeria", "Snorquel en Cabo de Gata",
                 "Practica snorquel a la orilla de una de las playas virgenes de Cabo de Gata. Allí podrás presenciar muchisima diversidad maritima, desde peces de muchos colores hasta corales de lo más misteriosos.",
@@ -120,13 +121,14 @@ public class Controllers {
             session.setAttribute("tipo", "all");
         }
 
-        //Metodo Date para obtener los dias entre dos fechas
+        // Metodo Date para obtener los dias entre dos fechas
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fEntrada = LocalDate.parse((String) session.getAttribute("fEntrada"), formatter);
         LocalDate fSalida = LocalDate.parse((String) session.getAttribute("fSalida"), formatter);
         long dias = ChronoUnit.DAYS.between(fEntrada, fSalida);
+        session.setAttribute("dias", dias);
 
-        //Carrito
+        // Carrito
         ArrayList<Actividad> carrito = (ArrayList<Actividad>) session.getAttribute("carrito");
         int precioCarro = 0;
         if (carrito == null) {
@@ -148,9 +150,9 @@ public class Controllers {
                 carrito.add(listaAct.get(añadirCarrito));
             }
         }
-        //Contador actividades
+        // Contador actividades
         int cont = carrito.size();
-        //Precio carro
+        // Precio carro
         for (int i = 0; i < carrito.size(); i++) {
             precioCarro += carrito.get(i).precio;
         }
@@ -177,10 +179,51 @@ public class Controllers {
         return "redirect:/inicio";
     }
 
+    @GetMapping("/verMas")
+    public String verMas(HttpSession session, Model model, @ModelAttribute("listaAct") ArrayList<Actividad> listaAct,
+            @RequestParam(name = "id") int id) {
+        Actividad act = listaAct.get(id);
+        act.duracion = act.getTiempo();
+        session.setAttribute("act", act);
+        return "verMas";
+    }
+
     @GetMapping("/confirmarCarrito")
-    public String confirmarCarrito(HttpSession session, Model model,@ModelAttribute("listaAct") ArrayList<Actividad> listaAct) {
+    public String confirmarCarrito(HttpSession session, Model model,
+            @ModelAttribute("listaAct") ArrayList<Actividad> listaAct) {
         ArrayList<Actividad> carrito = (ArrayList<Actividad>) session.getAttribute("carrito");
-        
         return "confirmarCarrito";
-    }    
+    }
+
+    @GetMapping("/planificar")
+    public String planificarViaje(HttpSession session, Model model,
+            @RequestParam(name = "actSel", required = false) Integer actSel,
+            @RequestParam(name = "posSel", required = false) Integer posSel) {
+        Long diasLong = (Long) session.getAttribute("dias");
+        int dias = diasLong.intValue();
+        ArrayList<Actividad> carrito = (ArrayList<Actividad>) session.getAttribute("carrito");
+        Actividad[] plan = (Actividad[]) session.getAttribute("plan");
+        if (plan == null) {
+            plan = new Actividad[dias];
+            session.setAttribute("plan", plan);
+        }
+        if (actSel != null) {
+            session.setAttribute("actSel", carrito.get(actSel));
+        }
+        if (posSel != null) {
+            session.setAttribute("posSel", posSel);
+        }
+        if (posSel != null && session.getAttribute("actSel") != null) {
+            plan[posSel] = (Actividad)session.getAttribute("actSel");
+            session.setAttribute("actSel", null);
+        }
+        session.setAttribute("plan", plan);
+        return "planificar";
+    }
+
+    @GetMapping("/final")
+    public String finalP(HttpSession session){
+        return "final";
+    }
+
 }

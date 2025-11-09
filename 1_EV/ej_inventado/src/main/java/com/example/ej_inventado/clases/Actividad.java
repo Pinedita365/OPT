@@ -21,7 +21,7 @@ public abstract  class Actividad implements Descripciones, Comparable<Actividad>
     }
 
     public int getDuracion() {
-        return duracion * 60;
+        return duracion;
     }
 
     public void setDuracion(int duracion) {
@@ -115,6 +115,23 @@ public abstract  class Actividad implements Descripciones, Comparable<Actividad>
         return Objects.equals(this.img, other.img);
     }
 
-    
+    @Override
+    public String getCategoria() {
+        return "Actividad deportiva";
+    }
+
+    @Override
+    public int getTiempo() {
+        return (getDuracion()/60);
+    }
+
+    @Override
+    public String getBreveDesc() {
+        if (getDescripcion().length() > 50) {
+            return getDescripcion().substring(0,50)+"...";   
+        }else{
+        return getDescripcion();
+        }
+    }
         
 }

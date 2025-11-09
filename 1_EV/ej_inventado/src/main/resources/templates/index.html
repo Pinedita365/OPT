@@ -33,9 +33,9 @@
                 <button type="submit">Comenzar planificación</button>
             </form>
 
-            
+            <div th:if="${session.errorMensaje}" class="mensaje-error" th:text="${session.errorMensaje}"></div>
         </main>
-                <div th:if="${errorMensaje}" class="mensaje-error" th:text="${errorMensaje}"></div>
+                
         <footer>
             <p>© 2025 <span class="logo">TriPing</span> — Tu aventura empieza aquí ✈️</p>
         </footer>
