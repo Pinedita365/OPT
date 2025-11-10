@@ -70,7 +70,7 @@ header.header {
     width: 100%;
     height: 500px;
     background: url('/img/inicio.jpg') no-repeat center center/cover;
-    margin-top: 80px; /* deja espacio bajo el header fijo */
+    background-attachment: fixed;
 }
 
 /* INFORMACIÓN DEL VIAJE (solo localidad + fechas) */
