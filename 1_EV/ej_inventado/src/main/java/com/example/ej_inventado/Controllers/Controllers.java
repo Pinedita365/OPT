@@ -1,6 +1,5 @@
 package com.example.ej_inventado.Controllers;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -9,6 +8,7 @@ import java.util.Collections;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,18 +20,28 @@ import com.example.ej_inventado.clases.Nivel;
 import com.example.ej_inventado.clases.Tipo;
 import com.example.ej_inventado.clases.Turistica;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class Controllers {
 
-    @GetMapping("/index")
-    public String iniciohtml() {
+    @GetMapping("/")
+    public String iniciohtml(HttpSession session,HttpServletResponse response,@CookieValue(value = "nombre",required=false)String nombre,@CookieValue(value = "fEntrada",required=false)String fEntrada,@CookieValue(value = "fSalida",required=false)String fSalida, @CookieValue(value = "ciudad",required=false)String ciudad) {
+        if (nombre != null) {
+            session.setAttribute("nombre", nombre);
+            session.setAttribute("ciudad", ciudad);
+            session.setAttribute("fEntrada", fEntrada);
+            session.setAttribute("fSalida", fSalida);
+            return "redirect:/inicio";
+        }else{
         return "index";
+    }
     }
 
     @GetMapping("/comprobar")
-    public String valida(Model model, @RequestParam(name = "ciudad") String ciudad,
+    public String valida(Model model, HttpServletResponse response, @RequestParam(name = "ciudad") String ciudad,
             @RequestParam(name = "nombre") String nombre, @RequestParam(name = "fEntrada") LocalDate fEntrada,
             @RequestParam(name = "fSalida") LocalDate fSalida, HttpSession session) {
         try {
@@ -39,12 +49,29 @@ public class Controllers {
                 throw new IllegalArgumentException("⚠️  La fecha de entrada no puede ser posterior a la de salida  ⚠️");
             }
             session.setAttribute("nombre", nombre);
+            Cookie cookieNombre = new Cookie("nombre", nombre);
+            cookieNombre.setMaxAge(3600);
+            
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String fechaIn = fEntrada.format(formato);
             String fechaSal = fSalida.format(formato);
             session.setAttribute("fEntrada", fechaIn);
+            Cookie cookieEntrada = new Cookie("fEntrada", (String)session.getAttribute("fEntrada"));
+            cookieEntrada.setMaxAge(3600);
             session.setAttribute("fSalida", fechaSal);
+            Cookie cookieSalida = new Cookie("fSalida", (String)session.getAttribute("fSalida"));
+            cookieSalida.setMaxAge(3600);
             session.setAttribute("ciudad", ciudad);
+            Cookie cookieCiudad = new Cookie("ciudad", ciudad);
+            cookieCiudad.setMaxAge(3600);
+            cookieNombre.setPath("/");
+            cookieEntrada.setPath("/");
+            cookieSalida.setPath("/");
+            cookieCiudad.setPath("/");
+            response.addCookie(cookieNombre);
+            response.addCookie(cookieEntrada);
+            response.addCookie(cookieSalida);
+            response.addCookie(cookieCiudad);
             return "redirect:/inicio";
         } catch (IllegalArgumentException e) {
             session.setAttribute("errorMensaje", e.getMessage());
