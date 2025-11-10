@@ -75,7 +75,7 @@ public class Controllers {
             return "redirect:/inicio";
         } catch (IllegalArgumentException e) {
             session.setAttribute("errorMensaje", e.getMessage());
-            return "redirect:/index";
+            return "redirect:/";
         }
 
     }
@@ -90,7 +90,7 @@ public class Controllers {
                 "Visita Sevilla con un profesional en la historia de esta ciudad. Visita monumentos como la Giralda, la Torre del Oro, la Plaza de España",
                 "img/giralda.jpg", false));
         listaAct.add(new Turistica(Tipo.TURISTICA, 180, 15, "Cantabria", "Reserva Natural de Cabárcenos",
-                "Visita la reserva nattural más grande de Europa. Un lugar donde podrás disfrutar de la presencia de animales como leones, elfantes, tigres...",
+                "Visita la reserva natural más grande de Europa. Un lugar donde podrás disfrutar de la presencia de animales como leones, elfantes, tigres...",
                 "img/reservanat.jpg", true));
         listaAct.add(new Turistica(Tipo.TURISTICA, 120, 0, "Almeria", "Faro de Cabo de Gata",
                 "Visita el faro de Cabo de Gata. un lugar donde tendrás las mejores vistas de la costa de Almeria.",
