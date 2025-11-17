@@ -1,5 +1,24 @@
 package com.example.tema2_2.clases;
 
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@Setter 
+@EqualsAndHashCode
+@Getter
+@AllArgsConstructor //Todos los contructores posibles
+@NoArgsConstructor //Constructor vacio
+@Data
+
+@Component
 public class Anuncio {
 
     static int id = 0 ;
@@ -7,8 +26,6 @@ public class Anuncio {
     public String nombre;
     public String asunto;
     public String descripcion;
-    public Anuncio() {
-    }
     public Anuncio(String nombre, String asunto, String descripcion) {
 
         this.idObjeto = id;
@@ -17,25 +34,5 @@ public class Anuncio {
         this.descripcion = descripcion;
         id++;
     }
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public String getAsunto() {
-        return asunto;
-    }
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
-    public String getDescripcion() {
-        return descripcion;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    
 
 }

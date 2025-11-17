@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        h2{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la página de registro</h1>
+    <span th:if="${name != null}" th:text="|Bienvenido ${name}|"></span>
+    <span th:unless="${name != null}">Anónimo</span>
+    <h2 th:if="${cont > 10}">La página ya se ha visitado más de 10 veces</h2>
+    <hr>
+    <form action="/RepasoCookies">
+        Introduzca su nombre: <br><input type="text" name="nombre">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

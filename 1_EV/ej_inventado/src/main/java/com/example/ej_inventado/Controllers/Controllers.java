@@ -51,7 +51,6 @@ public class Controllers {
             session.setAttribute("nombre", nombre);
             Cookie cookieNombre = new Cookie("nombre", nombre);
             cookieNombre.setMaxAge(3600);
-            
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String fechaIn = fEntrada.format(formato);
             String fechaSal = fSalida.format(formato);
