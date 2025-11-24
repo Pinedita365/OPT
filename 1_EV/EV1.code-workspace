@@ -5,6 +5,10 @@
 		},
 		{
 			"path": "ej_inventado"
+		},
+		{
+			"name": "demo",
+			"path": "demo"
 		}
 	],
 	"settings": {
