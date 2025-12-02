@@ -3,7 +3,9 @@ package com.example.ejercicio1_jpa;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AnuncioServicioImplementar implements AnuncioServicio{
 
     @Autowired

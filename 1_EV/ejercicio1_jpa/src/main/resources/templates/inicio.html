@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Notice board</h1>
+    <tr th:each="anuncio : ${anuncios}">
+      <a th:href="@{/final(id=${anuncio.id})}"><td th:text="${anuncio.nombre} + ' ' + ${anuncio.asunto} "></td></a><br>      
+    </tr>
+    <a href="nuevoAnuncio">Introducir un nuevo anucio</a>
+</body>
+</html>

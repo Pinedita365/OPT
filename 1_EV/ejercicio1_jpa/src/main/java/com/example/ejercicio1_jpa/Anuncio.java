@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ import lombok.ToString;
 @Table(name = "anuncios")
 public class Anuncio {
 
+    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Integer id;
 
@@ -38,5 +40,12 @@ public class Anuncio {
     @Column(name="descripcion")
     public String descripcion;
 
+    public Anuncio(String nombre, String asunto, String descripcion) {
+        this.nombre = nombre;
+        this.asunto = asunto;
+        this.descripcion = descripcion;
+    }
+   
+    
 
 }
