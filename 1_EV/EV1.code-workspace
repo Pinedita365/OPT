@@ -15,6 +15,9 @@
 		},
 		{
 			"path": "ejercicio1_jpa"
+		},
+		{
+			"path": "../../../Downloads/Proyecto con Dockerfile ya incluido-20251204/docker2/docker2"
 		}
 	],
 	"settings": {

@@ -1,5 +1,7 @@
 package com.example.ejercicio1_jpa;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,10 +42,15 @@ public class Anuncio {
     @Column(name="descripcion")
     public String descripcion;
 
+    @Column(name="FechaAnuncio")
+    public LocalDate fecha;
+
     public Anuncio(String nombre, String asunto, String descripcion) {
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.nombre = nombre;
         this.asunto = asunto;
         this.descripcion = descripcion;
+        this.fecha = LocalDate.now();
     }
    
     

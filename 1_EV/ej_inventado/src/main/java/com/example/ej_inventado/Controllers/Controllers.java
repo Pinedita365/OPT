@@ -217,6 +217,7 @@ public class Controllers {
     @GetMapping("/confirmarCarrito")
     public String confirmarCarrito(HttpSession session, Model model,
             @ModelAttribute("listaAct") ArrayList<Actividad> listaAct) {
+        @SuppressWarnings("unused")
         ArrayList<Actividad> carrito = (ArrayList<Actividad>) session.getAttribute("carrito");
         return "confirmarCarrito";
     }
