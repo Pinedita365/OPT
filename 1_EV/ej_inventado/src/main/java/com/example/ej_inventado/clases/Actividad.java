@@ -2,12 +2,43 @@ package com.example.ej_inventado.clases;
 
 import java.util.Objects;
 
-public abstract  class Actividad implements Descripciones, Comparable<Actividad>{
-    public Tipo tipo;
-    public int duracion, precio;
-    public String ciudad, nombre, descripcion, img;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Transient;
 
-    public Actividad(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img) {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Actividad implements Descripciones, Comparable<Actividad> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private Tipo tipo;
+
+    private int duracion;
+    private int precio;
+    private String ciudad;
+    private String nombre;
+
+    @Column(length = 500)
+    private String descripcion;
+
+    private String img;
+
+    // Constructor vacío OBLIGATORIO para JPA
+    public Actividad() {}
+
+    public Actividad(Tipo tipo, int duracion, int precio, String ciudad,
+                     String nombre, String descripcion, String img) {
         this.tipo = tipo;
         this.duracion = duracion;
         this.precio = precio;
@@ -17,121 +48,65 @@ public abstract  class Actividad implements Descripciones, Comparable<Actividad>
         this.img = img;
     }
 
-    public Actividad() {
-    }
+    // getters y setters
+    public Long getId() { return id; }
 
-    public int getDuracion() {
-        return duracion;
-    }
+    public Tipo getTipo() { return tipo; }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
+    public int getDuracion() { return duracion; }
 
-    public int getPrecio() {
-        return precio;
-    }
+    public int getPrecio() { return precio; }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
+    public String getCiudad() { return ciudad; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getDescripcion() { return descripcion; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getImg() { return img; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setDuracion(int duracion) { this.duracion = duracion; }
 
-    public String getImg() {
-        return img;
-    }
+    public void setPrecio(int precio) { this.precio = precio; }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
 
-    public String getCiudad() {
-        return ciudad;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public void setImg(String img) { this.img = img; }
+
+    // Ordenar por precio (desc)
+    @Override
+    public int compareTo(Actividad o) {
+        return o.precio - this.precio;
     }
 
     @Override
-    public int compareTo(Actividad o) {
-        return  o.precio - this.precio;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Actividad)) return false;
+        Actividad that = (Actividad) o;
+        return id != null && id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + this.duracion;
-        hash = 47 * hash + this.precio;
-        hash = 47 * hash + Objects.hashCode(this.ciudad);
-        hash = 47 * hash + Objects.hashCode(this.nombre);
-        hash = 47 * hash + Objects.hashCode(this.descripcion);
-        hash = 47 * hash + Objects.hashCode(this.img);
-        return hash;
+        return Objects.hashCode(id);
     }
-
+    
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Actividad other = (Actividad) obj;
-        if (this.duracion != other.duracion) {
-            return false;
-        }
-        if (this.precio != other.precio) {
-            return false;
-        }
-        if (!Objects.equals(this.ciudad, other.ciudad)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.descripcion, other.descripcion)) {
-            return false;
-        }
-        return Objects.equals(this.img, other.img);
-    }
-
-    @Override
-    public String getCategoria() {
-        return "Actividad deportiva";
-    }
-
-    @Override
+    @Transient
     public int getTiempo() {
-        return (getDuracion()/60);
+        return duracion / 60;
     }
 
     @Override
+    @Transient
     public String getBreveDesc() {
-        if (getDescripcion().length() > 50) {
-            return getDescripcion().substring(0,50)+"...";   
-        }else{
-        return getDescripcion();
-        }
+        return descripcion.length() > 50
+                ? descripcion.substring(0, 50) + "..."
+                : descripcion;
     }
-        
 }

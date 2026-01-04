@@ -1,16 +1,17 @@
 package com.example.ej_inventado.clases;
 
-public class Gastronomica extends Actividad{
+import jakarta.persistence.Entity;
 
-    public String vestimenta;
+@Entity
+public class Gastronomica extends Actividad {
 
-    public Gastronomica(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
-            String vestimenta) {
-        super(tipo,duracion, precio, ciudad, nombre, descripcion, img);
-        this.vestimenta = vestimenta;
-    }
+    private String vestimenta;
 
-    public Gastronomica(String vestimenta) {
+    public Gastronomica() {}
+
+    public Gastronomica(Tipo tipo, int duracion, int precio, String ciudad,
+                        String nombre, String descripcion, String img, String vestimenta) {
+        super(tipo, duracion, precio, ciudad, nombre, descripcion, img);
         this.vestimenta = vestimenta;
     }
 
@@ -26,21 +27,4 @@ public class Gastronomica extends Actividad{
     public String getCategoria() {
         return "Actividad gastronomica";
     }
-
-    @Override
-    public int getTiempo() {
-        return getDuracion()/60;
-    }
-
-    @Override
-    public String getBreveDesc() {
-        if (getDescripcion().length() > 50) {
-            return getDescripcion().substring(0,50)+"...";   
-        }else{
-            return getDescripcion();
-        }
-    }
-
-    
-
 }

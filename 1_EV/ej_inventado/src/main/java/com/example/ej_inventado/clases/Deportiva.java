@@ -1,16 +1,20 @@
 package com.example.ej_inventado.clases;
 
-public class Deportiva extends Actividad{
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
-    public Nivel nivel;
+@Entity
+public class Deportiva extends Actividad {
 
-    public Deportiva(Tipo tipo,int duracion, int precio, String ciudad, String nombre, String descripcion, String img,
-            Nivel nivel) {
-        super(tipo,duracion, precio, ciudad, nombre, descripcion, img);
-        this.nivel = nivel;
-    }
+    @Enumerated(EnumType.STRING)
+    private Nivel nivel;
 
-    public Deportiva(Nivel nivel) {
+    public Deportiva() {}
+
+    public Deportiva(Tipo tipo, int duracion, int precio, String ciudad,
+                     String nombre, String descripcion, String img, Nivel nivel) {
+        super(tipo, duracion, precio, ciudad, nombre, descripcion, img);
         this.nivel = nivel;
     }
 
@@ -25,19 +29,5 @@ public class Deportiva extends Actividad{
     @Override
     public String getCategoria() {
         return "Actividad deportiva";
-    }
-
-    @Override
-    public int getTiempo() {
-        return (getDuracion()/60);
-    }
-
-    @Override
-    public String getBreveDesc() {
-        if (getDescripcion().length() > 50) {
-            return getDescripcion().substring(0,50)+"...";   
-        }else{
-        return getDescripcion();
-        }
     }
 }
