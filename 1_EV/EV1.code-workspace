@@ -18,6 +18,10 @@
 		},
 		{
 			"path": "../../../Downloads/Proyecto con Dockerfile ya incluido-20251204/docker2/docker2"
+		},
+		{
+			"name": "ej1_tema5",
+			"path": "ej1_tema5"
 		}
 	],
 	"settings": {
