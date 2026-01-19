@@ -22,11 +22,15 @@
 		{
 			"name": "ej1_tema5",
 			"path": "ej1_tema5"
+		},
+		{
+			"name": "oauth",
+			"path": "oauth"
 		}
 	],
 	"settings": {
 		"java.compile.nullAnalysis.mode": "automatic",
 		"java.configuration.updateBuildConfiguration": "interactive",
-		"liveServer.settings.multiRootWorkspaceName": "ej_inventado"
+		"liveServer.settings.multiRootWorkspaceName": "oauth"
 	}
 }
