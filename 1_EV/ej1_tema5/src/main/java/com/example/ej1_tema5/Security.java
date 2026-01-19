@@ -34,7 +34,7 @@ public class Security {
 // Si el primer ejercicio era "automático" y el segundo era "por configuración", este tercer paso es "tomar el control total". Aquí te explico por qué es mejor:
 
 // Adiós a las contraseñas a la vista: Antes, tu contraseña estaba escrita tal cual en el archivo de texto. Ahora, gracias al BCryptPasswordEncoder, la contraseña "admin" viaja por el sistema como un código cifrado e indescifrable. Es el estándar que se usa en aplicaciones reales.
-
+ 
 // Capacidad de crecimiento: En el archivo .properties solo puedes tener un usuario. Con esta clase, si mañana necesitas 10 usuarios o 3 niveles de permisos distintos (quien solo lee, quien puede escribir, etc.), solo tienes que añadir unas líneas más de código en el mismo sitio.
 
 // Inteligencia de Spring: Al usar la anotación @Configuration, le estás diciendo a Spring: "Oye, olvida tus reglas por defecto, a partir de ahora yo te digo quién entra y cómo se valida la clave".
