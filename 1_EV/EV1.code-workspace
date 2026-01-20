@@ -26,6 +26,14 @@
 		{
 			"name": "oauth",
 			"path": "oauth"
+		},
+		{
+			"name": "rol-unico_distintos-permisos",
+			"path": "rol-unico_distintos-permisos"
+		},
+		{
+			"name": "varios-roles_usuario-memoria",
+			"path": "varios-roles_usuario-memoria"
 		}
 	],
 	"settings": {

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homer</title>
+</head>
+<body>
+    <h1>Página Home</h1>
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sing out">
+    </form>
+    <a th:href="@{/root}">Página root</a>
+</body>
+</html>
